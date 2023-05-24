@@ -3,12 +3,14 @@ import Home from './pages/Home';
 import Projects from './pages/Projects';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import Header from './components/Header';
+
 
 function App() {
   return (
     <Router>
       <div>
-        {/* <Navbar />       */}
+          <Header />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/projects" element={<Projects />} />
