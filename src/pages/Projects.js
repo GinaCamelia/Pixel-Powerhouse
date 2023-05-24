@@ -1,10 +1,11 @@
+
 const Project = () => {
-    return (
-        <div>
-            <h1>Projects</h1>
-            <p>This is the project page</p>
-        </div>
-    )
-}
+  return (
+    <div>
+      <section>
+      </section>
+    </div>
+  );
+};
 
 export default Project;
