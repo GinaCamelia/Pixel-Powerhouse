@@ -1,41 +1,50 @@
 import { Link } from "react-router-dom";
+import { useState } from 'react';
 import "../components/Header.css";
 
 const Header = () => {
+  const [isNavOpen, setIsNavOpen] = useState(false);
   const navLinks = [
     { title: "Home", path: "/" },
-    { title: "Work", path: "/work" },
+    { title: "Projects", path: "/projects" },
     { title: "About", path: "/about" },
     { title: "Contact", path: "/contact" },
   ];
 
+  const handleNavLink = () => {
+    setIsNavOpen(false);
+  }
+
   return (
     <div>
       <header>
-        <nav className="navbar navbar-expand-lg navbar-dark fixed-top custom-item">
+        <nav className="navbar navbar-expand-lg bg-body-tertiary custom-item">
           <div className="container-fluid">
-            <Link to="/" className="navbar-brand">
+            <Link to="/home" className="navbar-brand">
               Gina Hodorogea
             </Link>
             <button
-              className="navbar-toggler"
+              onClick={() => setIsNavOpen(!isNavOpen)}
+              class="navbar-toggler"
               type="button"
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded={isNavOpen}
               aria-label="Toggle navigation"
             >
               <i className="fa fa-bars"></i>
             </button>
-            <div
-              className="collapse navbar-collapse"
-              id="navbarSupportedContent"
-            >
+            <div className={`collapse navbar-collapse ${isNavOpen ? 'show' : ''}`} id="navbarNav">
               <ul className="navbar-nav ml-auto">
                 {navLinks.map(({ title, path }) => (
                   <li className="nav-item" key={title}>
-                    <Link to={path} className="nav-link">
+                    <Link
+                      to={path}
+                      className="nav-link active"
+                      aria-current="page"
+                      onClick={handleNavLink}
+                    >
                       {title}
                     </Link>
                   </li>
